@@ -2,11 +2,15 @@
   "name": "react-autofill",
   "version": "1.0.4",
   "description": "A polyfill for Safari that triggers a change event on autofill",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --progress --colors",
+    "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pephers/react-autofill.git"
   },
   "keywords": [
     "autofill",
@@ -14,11 +18,10 @@
   ],
   "author": "Chiel Robben <cr@fiftyfir.st>",
   "license": "MIT",
-  "devDependencies": {
-    "babel-loader": "^5.3.2",
-    "webpack": "^1.12.2"
-  },
   "peerDependencies": {
     "react": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29"
   }
 }
