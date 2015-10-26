@@ -1,62 +1,60 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default function autofill() {
+export default function autofill(DecoratedComponent) {
 
-    return function (DecoratedComponent) {
+    return class AutofillWrapper extends React.Component {
 
-        return class AutofillWrapper extends React.Component {
+        constructor(props, context) {
 
-            constructor(props, context) {
+            super(props, context);
 
-                super(props, context);
+            this._listeners = [];
 
-                this._listeners = [];
+        }
 
-            }
+        componentDidMount() {
 
-            componentDidMount() {
+            const forms = ReactDOM.findDOMNode(this).querySelectorAll('form');
 
-                const forms = ReactDOM.findDOMNode(this).querySelectorAll('form');
+            [].forEach.call(forms, (form) => {
+                [].forEach.call(form.elements, (element) => {
 
-                [].forEach.call(forms, (form) => {
-                    [].forEach.call(form.elements, (element) => {
+                    if (element.name === '') {
+                        return;
+                    }
 
-                        if (element.name === '') {
+                    this._listeners.push(setInterval(function () {
+
+                        if (this._previousValue === this.element.value) {
                             return;
                         }
 
-                        this._listeners.push(setInterval(function () {
+                        this._previousValue = this.element.value;
 
-                            if (this._previousValue === this.element.value) {
-                                return;
-                            }
+                        const evt = document.createEvent('HTMLEvents');
+                        evt.initEvent('input', true, true);
+                        this.element.dispatchEvent(evt);
 
-                            this._previousValue = this.element.value;
+                    }.bind({ element }), 20));
 
-                            const evt = document.createEvent('HTMLEvents');
-                            evt.initEvent('input', true, true);
-                            this.element.dispatchEvent(evt);
-
-                        }.bind({ element }), 20));
-
-                    });
                 });
-
-            }
-
-            componentWillUnmount() {
-
-                this._listeners.forEach(function (listener) {
-                    clearInterval(listener);
-                });
-
-            }
-
-            render() {
-                return <DecoratedComponent {...this.props}/>;
-            }
+            });
 
         }
+
+        componentWillUnmount() {
+
+            this._listeners.forEach(function (listener) {
+                clearInterval(listener);
+            });
+
+        }
+
+        render() {
+            return <DecoratedComponent {...this.props}/>;
+        }
+
     }
+
 }

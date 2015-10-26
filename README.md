@@ -38,6 +38,6 @@ class Form extends React.Component() {
 
 }
 
-React.render(autofill()(Form), document.body);
+React.render(autofill(Form), document.body);
 
 ```
