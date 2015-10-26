@@ -2,7 +2,7 @@
   "name": "react-autofill",
   "version": "1.0.3",
   "description": "A polyfill for Safari that triggers a change event on autofill",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --progress --colors",
     "prepublish": "npm run build",
