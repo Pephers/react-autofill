@@ -1,6 +1,6 @@
 {
   "name": "react-autofill",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A polyfill for Safari that triggers a change event on autofill",
   "main": "index.js",
   "scripts": {
