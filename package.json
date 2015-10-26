@@ -4,7 +4,8 @@
   "description": "A polyfill for Safari that triggers a change event on autofill",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --progress --colors -p",
+    "build": "node_modules/.bin/webpack --progress --colors",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
