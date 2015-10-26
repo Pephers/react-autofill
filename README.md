@@ -9,17 +9,27 @@ npm install --save react-autofill
 ```
 
 ## Usage
+ES2015 (aka. ES6):
 ```
 import React from 'react';
+import ReactDOM from 'react-dom';
 import autofill from 'react-autofill';
 
+class Form extends React.Component {
 
-class Form extends React.Component() {
+    constructor() {
+        super();
+        this.state = {};
+    }
 
     handleChange(e) {
 
         const { name, value } = e.currentTarget;
-        console.log(name, value);
+        const nextState = {};
+
+        nextState[name] = value;
+
+        this.setState(nextState);
 
     }
 
@@ -30,7 +40,7 @@ class Form extends React.Component() {
                 <input
                     onChange={this.handleChange.bind(this)}
                     name="field"
-                    value={this.state.value}/>
+                    value={this.state.field}/>
             </form>
         );
 
@@ -38,6 +48,13 @@ class Form extends React.Component() {
 
 }
 
-React.render(autofill(Form), document.body);
+ReactDOM.render(React.createElement(autofill(Form)), document.body);
 
+```
+ES7 (aka. ES2016):
+```
+@autofill
+class Form extends React.Component {
+    ...
+}
 ```
