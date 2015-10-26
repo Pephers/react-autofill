@@ -1,18 +1,23 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default function autofill() {
 
     return function (DecoratedComponent) {
 
-        return class {
+        return class AutofillWrapper extends React.Component {
 
-            constructor() {
+            constructor(props, context) {
+
+                super(props, context);
+
                 this._listeners = [];
+
             }
 
             componentDidMount() {
 
-                const forms = React.findDOMNode(this).querySelectorAll('form');
+                const forms = ReactDOM.findDOMNode(this).querySelectorAll('form');
 
                 [].forEach.call(forms, (form) => {
                     [].forEach.call(form.elements, (element) => {

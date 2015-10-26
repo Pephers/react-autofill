@@ -19,7 +19,8 @@
   "author": "Chiel Robben <cr@fiftyfir.st>",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "babel": "^5.8.29"
