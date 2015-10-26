@@ -1,0 +1,18 @@
+{
+  "name": "react-autofill",
+  "version": "1.0.0",
+  "description": "A polyfill for Safari that triggers a change event on autofill",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "autofill",
+    "autocomplete"
+  ],
+  "author": "Chiel Robben <cr@fiftyfir.st>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.0"
+  }
+}
