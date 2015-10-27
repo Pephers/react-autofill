@@ -10,7 +10,7 @@ npm install --save react-autofill
 
 ## Usage
 ES2015 (aka. ES6):
-```
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import autofill from 'react-autofill';
@@ -52,7 +52,7 @@ ReactDOM.render(React.createElement(autofill(Form)), document.body);
 
 ```
 ES7 (aka. ES2016):
-```
+```js
 @autofill
 class Form extends React.Component {
     ...
