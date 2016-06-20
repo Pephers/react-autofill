@@ -26,7 +26,7 @@ export default function autofill(DecoratedComponent) {
 
                     this._listeners.push(setInterval(function () {
 
-                        if (this._previousValue === this.element.value) {
+                        if (!this.element || this._previousValue === this.element.value) {
                             return;
                         }
 
