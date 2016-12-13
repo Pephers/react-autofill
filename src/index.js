@@ -52,7 +52,16 @@ export default function autofill(DecoratedComponent) {
         }
 
         render() {
-            return <DecoratedComponent {...this.props}/>;
+          const { innerRef } = this.props;
+          const propsForElement = {
+            ...this.props
+          };
+
+          if (innerRef) {
+            propsForElement.ref = innerRef;
+          }
+
+          return React.createElement(DecoratedComponent, propsForElement);
         }
 
     }
